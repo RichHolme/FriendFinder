@@ -14,39 +14,39 @@ module.exports = function(app){
 
 		console.log(userSum);
 		var matchSum = 0;
-		var matchName;
+		var match;
+		// var theMatch
 		// var sum;
-		var option;
+		// var option;
 		// console.log('for loop begining');
 		// console.log(friendsData[0]);
-		for(var i = 0; i < friendsData.length; i ++){
+		var friendsLength = friendsData.length - 1;
+		for(var i = 0; i < friendsLength; i ++){
 			// console.log('for loop working');
-			option = friendsData[i].scores;
+			// option = friendsData[i].scores;
 			// console.log(option);
-			var sum = option.reduce(function(a, b){
+			var option = friendsData[i].scores.reduce(function(a, b){
     			return parseInt(a) + parseInt(b);
 			});
 
-			// console.log(sum);
+			console.log(friendsData[i].name + " option: " +option);
 			var optionSum = userSum - option;
-
+			optionSum = Math.abs(optionSum);
+			console.log("option sum: " + optionSum);
 			if(i == 0){
 				// console.log('0 set');
 				matchSum = optionSum;
-				matchName = friendsData[i].name
+				match = friendsData[i]
 			}else if(optionSum < matchSum){
 				// console.log('better option');
 				matchSum = optionSum;
-				matchName = friendsData[i].name
-				// console.log(matchName);
-			}else{
-				// console.log('no option');
-				matchSum = matchSum;
-				matchName = matchName;
+				match = friendsData[i]
 				// console.log(matchName);
 			}
+
 		}
 
-		console.log('your match: ' +matchName);
+		console.log('your match: ' + match.name);
+		res.json(match);
 	})
 }
