@@ -15,16 +15,8 @@ module.exports = function(app){
 		console.log(userSum);
 		var matchSum = 0;
 		var match;
-		// var theMatch
-		// var sum;
-		// var option;
-		// console.log('for loop begining');
-		// console.log(friendsData[0]);
 		var friendsLength = friendsData.length - 1;
 		for(var i = 0; i < friendsLength; i ++){
-			// console.log('for loop working');
-			// option = friendsData[i].scores;
-			// console.log(option);
 			var option = friendsData[i].scores.reduce(function(a, b){
     			return parseInt(a) + parseInt(b);
 			});
@@ -46,7 +38,7 @@ module.exports = function(app){
 
 		}
 
-		console.log('your match: ' + match.name);
+		// console.log('your match: ' + match.name);
 		res.json(match);
 	})
 }
